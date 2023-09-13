@@ -5,7 +5,7 @@ import berry from "../assets/berry.png";
 
 
 const MovieCard = ({  title, image, popularity, genre_ids }) => (
-  <div className="p-4">
+  <div className="p-4 overflow-x-hidden">
     
     <div className="bg-white h-[513px] w-[250px] rounded-lg shadow-lg overflow-hidden">
       
@@ -57,7 +57,7 @@ const Hero = () => {
   console.log('top 10',topTenMovies)
 
   return (
-    <div className="container mx-auto p-4 grid grid-cols-1 place-items-center sm:grid-cols-3 md:grid-cols-4 gap-4">
+    <div className="container overflow-x-hidden mx-auto p-4 grid grid-cols-1 place-items-center sm:grid-cols-3 md:grid-cols-4 gap-4">
       {topTenMovies.map((movie) => (
         <MovieCard
           key={movie.id}

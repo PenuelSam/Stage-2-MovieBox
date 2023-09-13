@@ -19,7 +19,7 @@ const Header1 = ({ onSearch }) => {
   };
 
   return (
-    <header className="fixed top-0 right-0 left-0 py-4">
+    <header className="fixed overflow-x-hidden top-0 right-0 left-0 py-4">
       <div className="container mx-auto flex-col sm:flex-row overflow-x-hidden flex items-center justify-between">
         <img src={logo} alt="MovieBox Logo" className="w-32" />
         <div className="flex relative items-center">
@@ -85,7 +85,7 @@ const Header = () => {
   };
 
   return (
-    <header className="h-screen relative" style={backgroundImageStyle}>
+    <header className="h-screen overflow-x-hidden relative" style={backgroundImageStyle}>
       <Header1 onSearch={searchMovies} search={searchQuery} />
       <div className=" h-[285px] absolute left-10 top-52 w-[404px] flex flex-col justify-center items-start text-white">
         <h1 className="text-4xl font-semibold">{randomMovie?.title}</h1>
