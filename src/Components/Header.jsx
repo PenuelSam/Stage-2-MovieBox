@@ -20,7 +20,7 @@ const Header1 = ({ onSearch }) => {
 
   return (
     <header className="fixed top-0 right-0 left-0 py-4">
-      <div className="container mx-auto flex items-center justify-between">
+      <div className="container mx-auto flex-col sm:flex-row overflow-x-hidden flex items-center justify-between">
         <img src={logo} alt="MovieBox Logo" className="w-32" />
         <div className="flex relative items-center">
           <input
@@ -28,7 +28,7 @@ const Header1 = ({ onSearch }) => {
             placeholder="What do you want to watch?"
             value={query}
             onChange={handleInputChange}
-            className=" h-[2rem]  w-[35rem] text-white pl-5 bg-transparent border rounded-md focus:outline-none"
+            className=" h-[2rem] w-[10rem] sm:w-[35rem] text-white pl-5 bg-transparent border rounded-md focus:outline-none"
           />
           <SearchIcon
             onClick={handleSearch}
