@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import logo from "../assets/logo.png";
+import logo from "../assets/Logo.png";
 import menu from "../assets/Menu.png";
 import imdb from "../assets/IMDB.png";
 import SearchIcon from "@mui/icons-material/Search";
