@@ -20,7 +20,7 @@ const Header1 = ({ onSearch }) => {
   };
 
   return (
-    <header className="fixed overflow-x-hidden top-0 right-0 left-0 py-4">
+    <header className="fixed overflow-x-hidden z-10 top-0 right-0 left-0 py-4">
       <div className="container mx-auto hidden    overflow-x-hidden md:flex items-center justify-between">
         <img src={logo} alt="MovieBox Logo" className="w-32" />
         <div className="flex relative items-center">
