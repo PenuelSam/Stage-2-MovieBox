@@ -19,7 +19,7 @@ const MovieCard = ({id,  title, image, popularity, genre_ids, date, isLoading,  
     <div data-testid="movie-card" className="bg-white relative    h-[570px] w-[250px] rounded-lg shadow-lg overflow-hidden">
     <div onClick={() => {
           setActive(!active);
-        }} className={active ? 'bg-red-500  absolute z-50 right-5 top-2 w-6 h-6  flex items-center justify-center rounded-full':`absolute z-50 right-5 top-2 w-6 h-6 bg-gray-200 flex items-center justify-center rounded-full`}>
+        }} className={active ? 'bg-red-500 cursor-pointer absolute z-50 right-5 top-2 w-6 h-6  flex items-center justify-center rounded-full':`absolute cursor-pointer z-50 right-5 top-2 w-6 h-6 bg-gray-200 flex items-center justify-center rounded-full`}>
       <img src={heart} alt=""  />
       </div>
       <Link to={`/movie/${id}`}>
