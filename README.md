@@ -1,8 +1,14 @@
-# React + Vite
+# HNGX TASK 2
+This is the project for the second stage of the HNGX task 2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# AIM
+The aim of this task is to create a movie discovery web application that allows users to search for movies and view details about them. 
 
-Currently, two official plugins are available:
+# API USED
+https://developer.themoviedb.org/reference/intro/getting-started 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Technologies 
+I used React js and Tailwind css for this project 
+
+# Website link
+https://stage-2-movie-box-7f6f.vercel.app/
