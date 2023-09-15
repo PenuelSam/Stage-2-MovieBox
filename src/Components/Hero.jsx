@@ -8,13 +8,22 @@ import Preloader from "./Preloader";
 
 
 
-const MovieCard = ({id,  title, image, popularity, genre_ids, date, isLoading,  }) => (
+const MovieCard = ({id,  title, image, popularity, genre_ids, date, isLoading,  }) => {
+  const [active, setActive] = useState(false)
+  
+  return (
   <div className="p-4 overflow-x-hidden">  
   {isLoading ? (<Preloader />) :(
-    <Link to={`/movie/${id}`}>
-    <div data-testid="movie-card" className="bg-white relative h-[570px] w-[250px] rounded-lg shadow-lg overflow-hidden">
-      <img src={heart} alt="" className="absolute right-5 top-2" />
-      <img data-testid="movie-poster" src={image} alt={title} className="w-full object-cover" />
+    
+      
+    <div data-testid="movie-card" className="bg-white relative    h-[570px] w-[250px] rounded-lg shadow-lg overflow-hidden">
+    <div onClick={() => {
+          setActive(!active);
+        }} className={active ? 'bg-red-500  absolute z-50 right-5 top-2 w-6 h-6  flex items-center justify-center rounded-full':`absolute z-50 right-5 top-2 w-6 h-6 bg-gray-200 flex items-center justify-center rounded-full`}>
+      <img src={heart} alt=""  />
+      </div>
+      <Link to={`/movie/${id}`}>
+      <img data-testid="movie-poster" src={image} alt={title} className="w-full z-10 object-cover" />
       <div className="p-4">
         <span data-testid="movie-release_date" className="text-[#b6b5b5]">USA,{new Date(date).toUTCString()}</span>
         <h3 data-testid="movie-title" className="text-xl font-semibold mb-2">{title}</h3>
@@ -35,11 +44,12 @@ const MovieCard = ({id,  title, image, popularity, genre_ids, date, isLoading,  
           </div>
         </div>
       </div>
+      </Link>
     </div>
-    </Link>
+    
   )}
   </div>
-);
+)};
 
 const Hero = () => {
   const [movies, setMovies] = useState([]);
@@ -72,7 +82,7 @@ const Hero = () => {
 
   return (
     <div className="flex flex-col w-[100%] gap-16 items-center">
-    <div className="flex justify-between w-[90%] my-5">
+    <div className="flex flex-col md:flex-row justify-between w-[90%] my-5">
         <h3 className="text-4xl font-bold">Featured Movies</h3>
 
         <p className="text-mainRed cursor-pointer">
