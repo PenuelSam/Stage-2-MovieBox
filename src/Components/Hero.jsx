@@ -2,7 +2,7 @@
 import  { useState, useEffect } from "react";
 import imdb from "../assets/IMDB.png";
 import berry from "../assets/berry.png";
-import heart from "../assets/heart.png"
+import heart from "../assets/Heart.png"
 import { Link } from "react-router-dom";
 import Preloader from "./Preloader";
 
