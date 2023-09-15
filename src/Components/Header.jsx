@@ -6,6 +6,7 @@ import imdb from "../assets/IMDB.png";
 import SearchIcon from "@mui/icons-material/Search";
 import berry from "../assets/berry.png";
 import image from "../assets/Button.png";
+import SkeletonLoader from "./SkeletonLoader";
 
 const Header1 = ({ onSearch }) => {
   const [query, setQuery] = useState("");
@@ -46,7 +47,11 @@ const Header1 = ({ onSearch }) => {
 
 const Header = () => {
   const [randomMovie, setRandomMovie] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
+  //const [searchQuery, setSearchQuery] = useState("");
+  //const [searchInput, setSearchInput] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  //const [movieData, setMovieData] = useState([]);
+
 
   useEffect(() => {
     const options = {
@@ -58,7 +63,7 @@ const Header = () => {
       },
     };
 
-    // Fetch a random top-rated movie from the API
+    
     fetch(
       "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
       options
@@ -68,15 +73,42 @@ const Header = () => {
         const randomIndex = Math.floor(Math.random() * response.results.length);
         const randomMovieData = response.results[randomIndex];
         setRandomMovie(randomMovieData);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 2000); 
       })
       .catch((err) => console.error(err));
   }, []);
 
-  const searchMovies = (query) => {
-    setSearchQuery(query);
-    // Fetch movies based on the search query
-    // You can use a similar approach as fetching top-rated movies
-  };
+  {/*useEffect(() => {
+    const searchMovies = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZTc5Yzk0ZDBiMDYxNzA2ZTMzNWE0NjZhMWEyZDVkNSIsInN1YiI6IjY0ZmYwZTg3ZWZlYTdhMDEzN2QxYmZhNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9IvEzXnOqz4mp2KOOk36OFKHp8MLGjJlPUUJZSkI5Ao",
+      },
+    };
+    fetch(
+      `https://api.themoviedb.org/3/search/movie?query=${searchInput}&include_adult=false&language=en-US&page=1`,
+      searchMovies
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        if (searchInput === "") {
+          //   console.log("gyat");
+        } else if (searchInput !== "") {
+          return setMovieData(
+            response.results.filter((movie) => {
+              // only fethces movies that have a poster path in the object
+              return movie.poster_path;
+            })
+          );
+        }
+      })
+      .catch((err) => console.error(err));
+  }, [searchInput]);*/}
+
 
   const backgroundImageStyle = {
     backgroundImage: `url(https://image.tmdb.org/t/p/original${randomMovie?.backdrop_path})`,
@@ -85,8 +117,12 @@ const Header = () => {
   };
 
   return (
-    <header className="h-screen overflow-x-hidden relative" style={backgroundImageStyle}>
-      <Header1 onSearch={searchMovies} search={searchQuery} />
+    <>
+      {isLoading ? (
+        <SkeletonLoader /> 
+      ) :(
+        <header className="h-screen overflow-x-hidden relative" style={backgroundImageStyle}>
+      {/*<Header1 onSearch={searchMovies} search={searchQuery} />*/}
       <div className=" h-[285px] absolute left-10 top-52 w-[404px] flex flex-col justify-center items-start text-white">
         <h1 className="text-4xl font-semibold">{randomMovie?.title}</h1>
         <div className="flex items-center gap-10 pt-3">
@@ -109,6 +145,8 @@ const Header = () => {
         </div>
       </div>
     </header>
+    )}
+    </>
   );
 };
 

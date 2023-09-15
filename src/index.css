@@ -1,6 +1,9 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 
 *{
     margin: 0;
@@ -13,3 +16,28 @@ body{
     height: 100%;
     overflow-x: hidden;
 }
+
+
+.dashboard-lower > span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 15px 30px;
+  }
+  
+  .dashboard{
+    transition: 0.3s;
+    
+  }
+  
+  .dashboard-hamburger div {
+    transition: 0.3s;
+  }
+  
+  .dashboard-hamburger.active .bar-1 {
+    transform: translateY(4px) rotate(45deg);
+  }
+  .dashboard-hamburger.active .bar-2 {
+    transform: translateY(-5px) rotate(-45deg);
+  }
